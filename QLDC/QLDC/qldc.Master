@@ -1,0 +1,928 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="qldc.master.cs" Inherits="QLDC.qldc" %>
+
+<%@ Register src="menudong.ascx" tagname="menudong" tagprefix="uc1" %>
+<%@ Register Src="~/menuncc.ascx" TagPrefix="uc1" TagName="menuncc" %>
+<%@ Register Src="~/spbanchay.ascx" TagPrefix="uc1" TagName="spbanchay" %>
+<%@ Register Src="~/spgiamgia.ascx" TagPrefix="uc1" TagName="spgiamgia" %>
+<%@ Register Src="~/spnoibat.ascx" TagPrefix="uc1" TagName="spnoibat" %>
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Trang Chủ</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <style>
+          *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            height: 100%;
+            /* overflow-x: hidden; */
+            background: #eeeeee;
+        }
+        header{
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            background: #ff6900;
+            position: fixed;
+            transition: all 0.5s;
+            z-index: 100000000000;
+        }
+        header .header-container{
+            width: 1120px;
+            margin: 0 auto;
+        }
+        .header-system{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0px;
+        }
+        .header-system .header-system-icons{
+            position: relative;
+            letter-spacing: 3px;
+        }
+        .header-system .header-system-icons i{
+            color: white;
+            font-size: 13px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .header-system .header-system-icons i:hover{
+            opacity: 0.7;
+        }
+        .header-system .header-item1{
+            position: relative;
+        }
+        .header-system .header-item1 a{
+            color: white;
+            text-decoration: none;
+            padding: 0px 10px;
+            font-size: 13px;
+            opacity: 0.8;
+            transition: all 0.5s;
+        }
+        .header-system .header-item1 a:hover{
+            opacity: 1;
+            color: black;
+        }
+        .header-system .header-item1 a span{
+            padding: 0px 5px;
+        }
+        .header-container .header-center{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0px;
+        }
+        .header-container .header-center .logo img{
+            width: 250px;
+        }
+        .header-center .search{
+            position: relative;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .header-center .search .select{
+            width: 30px;
+            height: 20px;
+            background: white;
+            border: none;
+            outline: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-right: 1px solid rgba(51, 51, 51, 0.2);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        .header-center .search input{
+            width: 300px;
+            height: 40px;
+            background: none;
+            outline: none;
+            border: none;
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+            padding: 0px 5px;
+        }
+        .header-center .search button{
+            background: none;
+            outline: none;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-left: 1px solid rgba(51, 51, 51, 0.2);
+        }
+        .header-center .item2{
+            display: flex;
+        }
+        .header-center .item2 .phone1{
+            padding: 0px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .header-center .item2 .phone1 > i{
+            font-size: 20px;
+            padding: 0px 20px 0px 0px;
+        }
+
+        .header-center .item2 .phone1 .text-phone{
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 800;
+            line-height: 30px;
+        }
+        .header-center .item2 .phone1 .text-phone h1{
+            font-size: 12px;
+        }
+        .header-center .item2 .phone1 .text-phone span{
+            font-size: 15px;
+        }
+        .header-menu{
+            position: relative;
+            display: flex;
+        }
+        .menu-left{
+            position: relative;
+            width: 25%;
+            height: auto;
+        }
+        .menu-left .menu-left-content{
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            background:  #cf2e2e;
+            width: 100%;
+            height: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        .menu-left .menu-left-content > i{
+            padding: 0px 20px;
+            font-size: 14px;
+        }
+        .menu-left .menu-left-content > h3{
+            font-size: 15px;
+        }
+        .menu-left .menu-left-bars{
+            position: absolute;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            z-index: 10000000;
+        }
+        .menu-left .menu-left-bars > ul{
+            list-style: none;
+        }
+        .menu-left-bars > ul > li{
+            width: 100%;
+            padding: 15px 5px;
+            border: 1px solid rgba(51, 51, 51, 0.5);
+            transition: all 1s;
+            display: none;
+            background: white;
+            transform: translateX(-100%);
+        }
+        .menu-left.active .menu-left-bars > ul > li{
+            display: block;
+            transform: translateX(0px);
+        }
+        .menu-left .menu-left-bars > ul > li .fa-solid{
+            padding: 0px 10px 0px 5px;
+        }
+        .menu-left .menu-left-bars > ul > li .fa-regular{
+            padding: 0px 10px 0px 5px;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(1){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(2){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(3){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(4){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(5){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(6){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li:nth-child(7){
+            border-bottom: none;
+        }
+        .menu-left .menu-left-bars ul li a{
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .menu-left .menu-left-bars ul li:hover{
+            background: rgb(225, 225, 225);
+        }
+        .menu-right{
+            position: relative;
+            width: 75%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 5px;
+        }
+        .menu-right .menu-right-bars{
+            width: 85%;
+        }
+        .menu-right .menu-right-bars > ul{
+            display: flex;
+            list-style: none;
+        }
+        .menu-right .menu-right-bars > ul > li{
+            padding: 12px 20px;
+            transition: all 1s;
+        }
+        .menu-right .menu-right-bars ul li .fa-chevron-left{
+            transform: rotate(-90deg);
+            margin-left: 10px;
+        }
+        .menu-right .menu-right-bars > ul > li:hover{
+            background:  #cf2e2e;
+        }
+        .menu-right .menu-right-bars ul li a{
+            text-decoration: none;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+        }
+        .menu-right .menu-right-bars #menu-right-menucon:hover .menu-con{
+            display: block;
+            margin-left: 20px;
+        }
+        .menu-right-bars .menu-con{
+            width: 200px;
+            height: auto;
+            position: absolute;
+            margin-top: 11px;
+            margin-left: -10px;
+            background: white;
+            border: 1px solid rgb(202, 202, 202);
+            display: none;
+            z-index: 10000;
+        }
+        .menu-right-bars .menu-con > ul{
+            list-style: none;
+        }
+        .menu-right-bars .menu-con > ul > li{
+            padding: 10px 15px;
+            border-bottom: 1px solid rgb(159, 159, 159);
+            cursor: pointer;
+            transition: all 1s;
+        }
+        .menu-right-bars .menu-con > ul > li:hover{
+            background: rgb(225, 225, 225);
+        }
+        .menu-right-bars .menu-con > ul > li > a{
+            text-decoration: none;
+            color: rgb(159, 159, 159);
+            transition: all 1s;
+        }
+        .menu-right-bars .menu-con > ul > li:hover a{
+            color: black;
+        }
+        .menu-right .menu-right-content{
+            width: 15%;
+            padding: 0px 5px;
+            display: flex;
+            justify-content: space-around;
+    
+        }
+        .menu-right .menu-right-content .fa-solid{
+            position: relative;
+            width: 30px;
+            height: 30px;
+            padding: 10px;
+            color: rgb(232, 232, 232);
+            border: 1px solid rgb(232, 232, 232);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000000;
+            transition: all 0.5s ease-in-out;
+        }
+        .menu-right .menu-right-content .fa-solid:hover{
+            border: 1px solid #ff6900;
+        }
+
+        .menu-right .menu-right-content .fa-bag-shopping::after{
+            position: absolute;
+            content: 'Giỏ hàng';
+            width: 70px;
+            height: 20px;
+            background: white;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 100%;
+            z-index: 100000000;
+            border: 1px solid rgb(148, 148, 148);
+            display: none;
+        }
+        .menu-right .menu-right-content .fa-bag-shopping:hover::after{
+            display: flex;
+            justify-content: center;
+        }
+        .container-website{
+            width:100%;
+            height: 10px;
+            position: relative;
+            /*background: #fff; */
+            margin-top: 160px;
+        }
+        #body {
+            width:100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #center {
+            width: 55%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 10px;
+            float:left;
+        }
+        #right{
+            width:20%;
+            background-color: #808080;
+            float:left;
+        }
+        #menudoc {
+            width: 20%;
+            float: left;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-right: 1px solid #ddd;
+            height: 100%;
+        }
+
+        #menudoc a {
+            display: block;
+            color: #333;
+            padding: 8px 16px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 5px; 
+        }
+
+        #menudoc a:last-child {
+            margin-bottom: 0;
+        }
+
+        #menudoc a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        #right {
+            width: 20%;
+            float: left;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-right: 1px solid #ddd;
+            height: 100%;
+        }
+
+         #right a {
+            display: block;
+            color: #333;
+            padding: 8px 16px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 5px; 
+        }
+
+         #right a:last-child {
+            margin-bottom: 0;
+        }
+
+         #right a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        #footer {
+            clear: both;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .tieude {
+            color: #fff;
+            background-color: #3498db;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 0;
+            padding: 10px;
+            text-align:center;
+            border-radius: 5px; 
+        }
+        .anh{
+            width:30px;
+            height:30px;
+            border: 1px solid rgb(232, 232, 232);
+            /*border-radius: 50%;*/
+
+        }
+     
+        .auto-style1 {
+            width:230px;
+            height:156px;
+            padding: 10px;
+           
+            border-radius: 5px;
+        }
+
+        /* Styles for the ASP.NET Button */
+        #Button1 {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #Button1:hover {
+            background-color: #45a049;
+        }
+
+            auto-style1 {
+                width: 230px;
+            }
+            footer{
+                margin-top: 10px;
+                background-color: #d3d3d3;
+            }
+
+            .footer-bottom{
+                width: 100%;
+                height: 300px;
+                background-color: #ff6900;
+                padding-top: 30px;
+                border-top: 3px solid rgb(255, 153, 0);
+            }
+            .footer-bottom-text{
+                display: flex;
+                width: 1170px;
+                margin: 0 auto;
+            }
+            .footer-bottom-text .lienhe{
+                width: 270px;
+                margin-right: 30px;
+            }
+            .footer-bottom-text .lienhe h3{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .footer-bottom-text .lienhe p{
+	            color: white;
+    
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                margin-bottom: 15px;
+            }
+            .footer-bottom-text .lienhe i{
+                margin-right: 10px;
+            }
+            .footer-bottom-text .ankitchen{
+                width: 270px;
+                margin-right: 30px;
+            }
+            .footer-bottom-text .ankitchen h3{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .footer-bottom-text .ankitchen ul{
+                list-style: none;
+            }
+            .footer-bottom-text .ankitchen ul li{
+                margin-bottom: 5px;
+            }
+            .footer-bottom-text .ankitchen ul li a{
+                text-decoration: none;
+                color: white;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .footer-bottom-text .ankitchen ul li a:hover{
+                color: black;
+            }
+            .footer-bottom-text .khachhang{
+                width: 270px;
+                margin-right: 30px;
+            }
+            .footer-bottom-text .khachhang h3{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .footer-bottom-text .khachhang ul{
+                list-style: none;
+            }
+            .footer-bottom-text .khachhang ul li{
+                margin-bottom: 5px;
+            }
+            .footer-bottom-text .khachhang ul li a{
+                text-decoration: none;
+                color: white;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .footer-bottom-text .khachhang ul li a:hover{
+                color:black;
+            }
+            .shop-website-item7s{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                padding: 30px 0px 55px 0px;
+            }
+            .shop-website-item7s .shop-website-item7-container{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+            }
+            .shop-website-item7-container .shop-website-item7{
+                position: relative;
+                width: 1120px;
+                height: 100%;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .shop-website-item7-container .shop-website-item7 .item7-delivery{
+                position: relative;
+                width: 32%;
+                height: 100%;
+            }
+            .shop-website-item7 .item7-delivery img{
+                width: 55px;
+                float: left;
+                margin-right: 15px;
+                padding: 5px 0px;
+            }
+            .shop-website-item7 .item7-delivery .delivery-content{
+                line-height: 25px;
+            }
+            .shop-website-item7 .item7-delivery .delivery-content h1{
+                font-family: 'Roboto', sans-serif;
+                font-size: 18px;
+            }
+            .shop-website-item7 .item7-delivery .delivery-content p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 15px;
+                font-weight: 300;
+                color: rgb(157, 157, 157);
+            }
+
+            .shop-website-item7-container .shop-website-item7 .item7-super-savings{
+                position: relative;
+                width: 32%;
+                height: 100%;
+            }
+            .shop-website-item7 .item7-super-savings img{
+                width: 45px;
+                float: left;
+                margin-right: 15px;
+                padding: 5px 0px;
+            }
+            .shop-website-item7 .item7-super-savings .super-savings-content{
+                line-height: 25px;
+            }
+            .shop-website-item7 .item7-super-savings .super-savings-content h1{
+                font-family: 'Roboto', sans-serif;
+                font-size: 18px;
+            }
+            .shop-website-item7 .item7-super-savings .super-savings-content p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 15px;
+                font-weight: 300;
+                color: rgb(157, 157, 157);
+            }
+
+            .shop-website-item7-container .shop-website-item7 .item7-genuine{
+                position: relative;
+                width: 32%;
+                height: 100%;
+            }
+            .shop-website-item7 .item7-genuine img{
+                width: 40px;
+                float: left;
+                margin-right: 15px;
+                padding: 5px 0px;
+            }
+            .shop-website-item7 .item7-genuine .genuine-content{
+                line-height: 25px;
+            }
+            .shop-website-item7 .item7-genuine .genuine-content h1{
+                font-family: 'Roboto', sans-serif;
+                font-size: 18px;
+            }
+            .shop-website-item7 .item7-genuine .genuine-content p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 15px;
+                font-weight: 300;
+                color: rgb(157, 157, 157);
+            }
+            .anh{
+                width:100%;
+                height:500px;
+            }
+            
+            /*---hết tìm kiếm*/
+             
+                       
+            .search {
+                display: flex;
+                align-items: center;
+                width: 30%;
+                height: 40px;
+            }
+
+            .search_txt {
+                width: 70%; 
+            }
+
+            .search-button {
+                width: 30%; 
+                
+            }
+
+            /* CSS cho phần nút button */
+            .search-button a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+                position: relative;
+            }
+
+            /* Icon tìm kiếm */
+            .search-button a i {
+                position: absolute;
+                left: 10px; /* Điều chỉnh khoảng cách của biểu tượng từ biên trái */
+            }
+
+            /* Hiệu ứng hover */
+            .search-button a:hover {
+                background-color: #0056b3;
+            }
+           
+
+
+                </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+        <div class="header-container">
+            <div class="header-system">
+                <div class="header-system-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100009365905832"><i class="fa-brands fa-facebook-f"></i></a>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div class="header-item1">
+                    <a href="dangnhap.aspx" onclick="showLoginForm()"><span><i class="fa-solid fa-user"></i></span>Tài khoản</a>
+                    <script>
+                        function showLoginForm() {
+                            var loginForm = document.getElementById("loginForm");
+                            loginForm.style.display = "block";
+                        }
+                    </script>
+                    <a href="trangchu.aspx"><span><i class="fa-solid fa-shop"></i></span>Sản phẩm</a>
+                    <a href="trangchu.aspx"><span><i class="fa-solid fa-medal"></i></span>Hệ thống cửa hàng</a>
+                </div>
+            </div>
+            <div class="header-center">
+                <div class="logo">
+                   <a href="trangchu.aspx"><img src="image/anh3.png" /></a>
+                    
+                 
+                </div>
+                <div class="search">
+                    <div class="search_txt">
+                    <!--<input type="text" placeholder="Bạn tìm gì...">
+                    <button class="search-button"><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></button>
+                    <input type="text" placeholder="Bạn tìm gì..." class="auto-style1" />-->
+                    <asp:TextBox ID="txttimkiem" placeholder="Bạn tìm gì..."  runat="server" ></asp:TextBox>
+                   
+                     <!--<span><a href="timkiem.aspx"><i class="fa-solid fa-search"></i></a></span>-->
+                </div>
+                <div class="search-button">
+                     
+                     <a href="timkiem.aspx"><asp:Button ID="btntimkiem" runat="server" OnClick="btntimkiem_Click2" Text="Tìm kiếm" Font-Bold="True" ForeColor="White" /></a>
+                     
+                     
+                </div>
+                </div>
+                <div class="item2">
+                    <div class="phone1">
+                        <i class="fa-solid fa-phone"></i>
+                        <div class="text-phone">
+                            <a href="#" style="text-decoration:none; color:aliceblue">
+                            <h1>Gọi đặt hàng</h1>
+                            <span>0888 266 233</span></a>
+                        </div>
+                    </div>
+                    <div class="phone1">
+                        <i class="fa-solid fa-phone"></i>
+                        <div class="text-phone">
+                            <a href="#" style="text-decoration:none; color:aliceblue">
+                            <h1>Gọi tư vấn</h1>
+                            <span>0888 266 233</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-menu">
+                <div class="menu-left">
+                    
+                </div>
+                <div class="menu-right">
+                    <div class="menu-right-bars">
+                        <ul>
+                            <li><a href="trangchu.aspx">Trang Chủ</a></li>
+                            <li><a href="gioithieu.aspx">Giới thiệu</a></li>
+                            
+                            <li><a href="#">Tin tức</a></li>
+                           
+                           
+                            <li><a href="lienhe.aspx">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-right-content">
+                        <span><i class="fa-solid fa-user"></i></span>
+                        <span><a href="giohang.aspx"><i class="fa-solid fa-bag-shopping"></i></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-website">
+        
+        
+        
+        </div>
+
+<div id="body">
+    <div id="menudoc">
+       <p class="tieude">LOẠI TRÒ CHƠI</p>
+        <uc1:menudong ID="menudong1" runat="server" />
+       <p class="tieude">NHÀ CUNG CẤP</p>
+        <uc1:menuncc runat="server" ID="menuncc" />
+        <img class="anh" src="image/banner5.jpg" />
+        <img class="anh" src="image/anh40.png" />
+    </div>
+    <div id="center">
+       
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                            
+    </div>
+    <div id="right">
+       <p class="tieude">Sản phẩm bán chạy</p>
+        <uc1:spbanchay runat="server" ID="spbanchay" />
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+       <p class="tieude">Sản phẩm giảm giá</p>
+        <uc1:spgiamgia runat="server" ID="spgiamgia" />
+       <p class="tieude">Sản phẩm nổi bật</p>
+        <uc1:spnoibat runat="server" id="spnoibat" />
+    </div>
+    
+</div>
+
+        <div class="shop-website-item7s">
+                <div class="shop-website-item7-container">
+                    <div class="shop-website-item7">
+                        <div class="item7-delivery">
+                            <img src="image/delivery.png" alt="">
+                            <div class="delivery-content">
+                                <h1>Giao hàng cực nhanh</h1>
+                                <p>Miễn phí với đơn hàng trị giá trên 800.000đ</p>
+                            </div>
+                        </div>
+                        <div class="item7-super-savings">
+                            <img src="image/super-savings.png" alt="">
+                            <div class="super-savings-content">
+                                <h1>Mua hàng siêu tiết kiệm</h1>
+                                <p>Rẻ hơn từ 10% - 30% so với giá thị trường</p>
+                            </div>
+                        </div>
+                        <div class="item7-genuine">
+                            <img src="image/genuine.png" alt="">
+                            <div class="genuine-content">
+                                <h1>Sản phẩm chính hãng 100%</h1>
+                                <p>Sản phẩm được nhập khẩu chính hãng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ <footer>
+            
+        <div class="footer-bottom">
+            <div class="footer-bottom-text">
+                <div class="lienhe">
+                    <h3>LIÊN HỆ</h3>
+                    <a href="#" style="text-decoration: none;"><P><i class="fa-solid fa-location-dot"></i>Địa chỉ :76 Tiên Sơn - Tiên Cát - Thành Phố Việt Trì - Phú Thọ</P></a>
+                    <a href="#" style="text-decoration: none;"><p><i class="fa-solid fa-phone"></i>0988937058</p></a>
+                    <a href="#" style="text-decoration: none;"><p><i class="fa-solid fa-envelope"></i>thanhhang123@gmail.com</p></a>
+                </div>
+                <div class="ankitchen">
+                    <h3>TRANG CHỦ</h3>
+                    <ul>
+                        <li><a href="trangchu.aspx">Trang chủ</a></li>
+                        <li><a href="trangchu.aspx">Tính năng nổi bật</a></li>
+                        <li><a href="trangchu.aspx">Giới thiệu</a></li>
+                        <li><a href="trangchu.aspx">Sản phẩm</a></li>
+                        <li><a href="trangchu.aspx">Tin tức</a></li>
+                        <li><a href="trangchu.aspx">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="khachhang">
+                    <h3>DÀNH CHO KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="trangchu.aspx">Chính sách vận chuyển</a></li>
+                        <li><a href="trangchu.aspx">Hướng dẫn thanh toán</a></li>
+                        <li><a href="trangchu.aspx">Hướng dẫn chọn size</a></li>
+                        <li><a href="trangchu.aspx">Huy định đổi hàng</a></li>
+                        <li><a href="trangchu.aspx">Quy định bảo hành và sửa chữa</a></li>
+                        <li><a href="trangchu.aspx">Khách hàng thân thiết</a></li>
+                        
+        
+                    </ul>
+                </div>
+                <div class="thanhtoan">
+                    <h3>VẬN CHUYỂN & THANH TOÁN</h3>
+                    <div class="image-thanhtoan">
+                        <a href="https://www.facebook.com/profile.php?id=100009365905832" style="text-decoration: none;"><i class="fa-brands fa-facebook-f" style="padding: 10px;"></i></a>
+                        <a href="http://www.instagram.com/thanhhangtn" style="text-decoration: none;"><i class="fa-brands fa-instagram" style="padding: 10px;"></i></a>
+                        <a href="#" style="text-decoration: none;"><i class="fa-brands fa-twitter" style="padding: 10px;"></i></a>
+                        <a href="#" style="text-decoration: none;"><i class="fa-regular fa-envelope" style="padding: 10px;"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </footer>
+    </form>
+</body>
+</html>
