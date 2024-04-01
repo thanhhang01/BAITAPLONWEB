@@ -11,16 +11,16 @@ namespace QLDC
 {
 
 
-    public partial class giohang1
+    public partial class generatecaptcha
     {
 
         /// <summary>
-        /// rptProductsInCart control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptProductsInCart;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
     }
 }

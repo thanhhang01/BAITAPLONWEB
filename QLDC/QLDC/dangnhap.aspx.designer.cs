@@ -42,6 +42,24 @@ namespace QLDC
         protected global::System.Web.UI.WebControls.TextBox txtmatkhau;
 
         /// <summary>
+        /// txtsecuritycode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtsecuritycode;
+
+        /// <summary>
+        /// captchaImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage captchaImage;
+
+        /// <summary>
         /// btndangnhap control.
         /// </summary>
         /// <remarks>

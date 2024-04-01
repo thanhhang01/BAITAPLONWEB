@@ -34,4 +34,26 @@ public class Ketnoi
         cmd = new SqlCommand(sql, con);
         cmd.ExecuteNonQuery();
     }
+
+    public int kiemtra(string query)
+    {
+        int result = 0;
+        // Mở kết nối đến cơ sở dữ liệu
+        using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-9U5V67H;Initial Catalog=QLBDC;Integrated Security=True"))
+        {
+            // Mở kết nối
+            connection.Open();
+
+            // Tạo đối tượng Command và thi hành truy vấn
+            SqlCommand command = new SqlCommand(query, connection);
+
+            // Thực hiện truy vấn và gán kết quả vào biến result
+            result = (int)command.ExecuteScalar();
+
+            // Đóng kết nối
+            connection.Close();
+        }
+        // Trả về kết quả của truy vấn
+        return result;
+    }
 }

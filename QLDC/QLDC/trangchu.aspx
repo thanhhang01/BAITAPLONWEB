@@ -98,7 +98,7 @@
             .LinkButton1 {
                 display: inline-block;
                 padding: 10px 20px; 
-                font-size: 16px; 
+                font-size: 10px; 
                 text-align: center;
                 text-decoration: none;
                 cursor: pointer;
@@ -156,6 +156,7 @@
             .auto-style4 {
                 height: 41px;
                 width: 36px;
+                padding-left:10px;
             }
             
         </style>
@@ -230,8 +231,11 @@
               </tr>
             <tr class="da">
                 <td class="auto-style4" class="d">
-                    &nbsp;&nbsp;<asp:LinkButton ID="LinkButton1" runat="server" class="LinkButton1" Text="Thêm giỏ hàng" CommandArgument='<%# "giohang?masp="+Eval("masp") %>'  OnClick="LinkButton1_Click" OnClientClick="addToCart();"></asp:LinkButton>
+                    &nbsp;&nbsp;<asp:Button ID="btnAddToCart" class="LinkButton1" runat="server" Text="Thêm vào giỏ hàng" CommandArgument='<%# Eval("masp") %>' OnClick="btnAddToCart_Click1"/>
+                
+
                 </td>
+              
             </tr>
             <caption>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -267,48 +271,16 @@
             </table>
         </ItemTemplate>
     </asp:DataList>
-            <input type="hidden" id="hiddenProductName" />
-<input type="hidden" id="hiddenProductPrice" />
-  <!-- Thêm một thẻ div để chứa danh sách sản phẩm trong giỏ hàng -->
+ 
 
 
-<!-- Script để cập nhật danh sách sản phẩm trong giỏ hàng -->
+    
 <script>
-    // Kiểm tra sự tồn tại của hiddenProductName và hiddenProductPrice
-    var hiddenProductNameElement = document.getElementById('hiddenProductName');
-    var hiddenProductPriceElement = document.getElementById('hiddenProductPrice');
-
-    if (hiddenProductNameElement && hiddenProductPriceElement) {
-        // Lấy thông tin sản phẩm từ các input ẩn
-        var productName = hiddenProductNameElement.value;
-        var productPrice = hiddenProductPriceElement.value;
-
-        // Tạo một thẻ p để hiển thị thông tin sản phẩm và giá
-        var productInfo = document.createElement('p');
-        productInfo.innerHTML = productName + ' - ' + productPrice + ' đ';
-
-        // Thêm thẻ p vào danh sách sản phẩm trong giỏ hàng
-        var cartItemsContainer = document.getElementById('cartItems');
-        if (cartItemsContainer) {
-            cartItemsContainer.appendChild(productInfo);
-        } else {
-            console.error('Không tìm thấy cartItems.');
-        }
-    } else {
-        console.error('Không tìm thấy hiddenProductName hoặc hiddenProductPrice.');
+    function redirectToCart() {
+        // Chuyển hướng người dùng đến trang giỏ hàng
+        window.location.href = 'giohang.aspx';
     }
-
-    // Hàm được gọi khi thêm vào giỏ hàng thành công
-    function addToCartSuccess(result) {
-        alert(result); // Hiển thị thông báo thành công (có thể sửa đổi theo nhu cầu)
-    }
-
-    // Hàm được gọi khi thêm vào giỏ hàng thất bại
-    function addToCartFailure(error) {
-        alert("Có lỗi xảy ra khi thêm vào giỏ hàng."); // Hiển thị thông báo lỗi
-    }
-</script>
-
+       </script>
 
 </asp:Content>
 

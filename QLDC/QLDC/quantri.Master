@@ -101,7 +101,7 @@
     <a>Trang chủ</a>
     <a href="loaisanpham.aspx">Quản trị</a>
     <a>Tin tức</a>
-    <a>Liên hệ</a>
+    <a href="lienheqt.aspx">Liên hệ</a>
     <a href="User.aspx">Quản lý tài khoản</a>
 </div>
 

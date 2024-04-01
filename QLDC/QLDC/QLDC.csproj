@@ -124,14 +124,18 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="ctdonhang.aspx" />
+    <Content Include="dangky.aspx" />
     <Content Include="dangnhap.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="dondathang.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="generatecaptcha.aspx" />
     <Content Include="giohang.aspx" />
+    <Content Include="giohang1.aspx" />
     <Content Include="gioithieu.aspx" />
     <Content Include="image\anh40.png" />
     <Content Include="lienhe.aspx" />
+    <Content Include="lienheqt.aspx" />
     <Content Include="sanpham.aspx" />
     <Content Include="splienquan.ascx" />
     <Content Include="spnoibat.ascx" />
@@ -249,6 +253,7 @@
     <Compile Include="Chitietsp.aspx.designer.cs">
       <DependentUpon>Chitietsp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +267,13 @@
     </Compile>
     <Compile Include="ctdonhang.aspx.designer.cs">
       <DependentUpon>ctdonhang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dangky.aspx.cs">
+      <DependentUpon>dangky.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dangky.aspx.designer.cs">
+      <DependentUpon>dangky.aspx</DependentUpon>
     </Compile>
     <Compile Include="dangnhap.aspx.cs">
       <DependentUpon>dangnhap.aspx</DependentUpon>
@@ -284,12 +296,26 @@
     <Compile Include="dondathang.aspx.designer.cs">
       <DependentUpon>dondathang.aspx</DependentUpon>
     </Compile>
+    <Compile Include="generatecaptcha.aspx.cs">
+      <DependentUpon>generatecaptcha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="generatecaptcha.aspx.designer.cs">
+      <DependentUpon>generatecaptcha.aspx</DependentUpon>
+    </Compile>
     <Compile Include="giohang.aspx.cs">
       <DependentUpon>giohang.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="giohang.aspx.designer.cs">
       <DependentUpon>giohang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="giohang1.aspx.cs">
+      <DependentUpon>giohang1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="giohang1.aspx.designer.cs">
+      <DependentUpon>giohang1.aspx</DependentUpon>
     </Compile>
     <Compile Include="gioithieu.aspx.cs">
       <DependentUpon>gioithieu.aspx</DependentUpon>
@@ -298,12 +324,20 @@
     <Compile Include="gioithieu.aspx.designer.cs">
       <DependentUpon>gioithieu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="imgCaptcha.cs" />
     <Compile Include="lienhe.aspx.cs">
       <DependentUpon>lienhe.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="lienhe.aspx.designer.cs">
       <DependentUpon>lienhe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lienheqt.aspx.cs">
+      <DependentUpon>lienheqt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lienheqt.aspx.designer.cs">
+      <DependentUpon>lienheqt.aspx</DependentUpon>
     </Compile>
     <Compile Include="sanpham.aspx.cs">
       <DependentUpon>sanpham.aspx</DependentUpon>

@@ -41,21 +41,31 @@ namespace QLDC
             try
             {
                 kn.Open();
-                kn.xuly("INSERT INTO dangnhap VALUES(N'" + txttdn.Text + "','" + txtmk.Text + "',N'"+ txtrole.Text +"')");
+
+                // Kiểm tra xem tên đăng nhập đã tồn tại trong cơ sở dữ liệu chưa
+                bool exist = kn.kiemtra("SELECT COUNT(*) FROM dangnhap WHERE tendangnhap = '" + txttdn.Text + "'") > 0;
+
+                if (exist)
+                {
+                    // Hiển thị thông báo nếu tên đăng nhập đã tồn tại
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorMessage", "alert('Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.');", true);
+                }
+                else
+                {
+                    // Thêm mới tài khoản nếu tên đăng nhập không tồn tại
+                    kn.xuly("INSERT INTO dangnhap VALUES(N'" + txttdn.Text + "','" + txtmk.Text + "',N'" + txtrole.Text + "')");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "successMessage", "alert('Thêm tài khoản thành công.');", true);
+                }
+
                 kn.close();
-
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "successMessage", "alert('Thêm tài khoản thành công.');", true);
-
-
                 load();
             }
             catch (Exception ex)
             {
-
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "errorMessage", "alert('Đã xảy ra lỗi khi thêm tài khoản. " + ex.Message + "');", true);
             }
         }
+
 
         protected void btnsua_Click(object sender, EventArgs e)
         {
